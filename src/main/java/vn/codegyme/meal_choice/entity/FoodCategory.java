@@ -8,28 +8,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "food_categories")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString(exclude = "foods")
 public class FoodCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
     private Long id;
 
-    @Column(name = "name", nullable = false, unique = true, length = 100)
+    @Column(
+            name = "category_name",
+            nullable = false,
+            unique = true,
+            length = 100
+    )
     private String categoryName;
 
     @Column(name = "category_description", length = 255)
     private String categoryDescription;
-
-    @Transient
-    private String imageUrl;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -37,27 +37,16 @@ public class FoodCategory {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @ManyToMany(mappedBy = "foodCategories")
     @Builder.Default
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Food> foods = new ArrayList<>();
-
-    // Getter/Setter alias name để tương thích hoàn toàn với Thymeleaf và code cũ
-    public String getName() {
-        return categoryName;
-    }
-
-    public void setName(String name) {
-        this.categoryName = name;
-    }
-
-    public FoodCategory(String categoryName) {
-        this.categoryName = categoryName;
-    }
 
     @PrePersist
     protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.now();
+
+        createdAt = now;
+        updatedAt = now;
     }
 
     @PreUpdate
