@@ -286,7 +286,6 @@ Một Merchant cần được Admin phê duyệt trước khi sử dụng đầy
 | Đỗ Xuân Trường | Core Developer | Giải quyết bài toán kỹ thuật phức tạp và kiểm thử |
 | Lữ Nguyễn Hải Triều | Core Developer | Phát triển tính năng và tối ưu hóa code chung |
 | Nguyễn Văn Hưng | Developer | Phát triển chức năng theo phân công |
-| Đồng Minh Đức | Developer | Phát triển chức năng theo phân công |
 
 ### Sprint và Git
 

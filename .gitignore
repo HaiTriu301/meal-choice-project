@@ -37,3 +37,8 @@ out/
 .vscode/
 
 uploads/
+
+### Secrets ###
+.env
+.env.*
+!.env.example
